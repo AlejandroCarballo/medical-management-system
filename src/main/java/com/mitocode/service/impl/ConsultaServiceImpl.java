@@ -17,7 +17,12 @@ public class ConsultaServiceImpl implements IConsultaService {
 
 	@Override
 	public Consulta registrar(Consulta consulta) {		
-		consulta.getDetalleConsulta().forEach(x -> x.setConsulta(consulta));
+		//Esto es java7
+		/*for(DetalleConsulta det : consulta.getDetalleConsulta()) {
+			det.setConsulta(consulta);
+		}*/
+		//java 8
+		consulta.getDetalleConsulta().forEach(x -> x.setConsulta(consulta));		
 		return dao.save(consulta);
 	}
 
